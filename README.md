@@ -2,4 +2,4 @@
 
 ## Python
 
-Prática em sala - Aula 02 - Models
+Prática em sala - Aulas 02, 03 e 04 - Models, Views e Templates
