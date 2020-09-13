@@ -20,6 +20,11 @@ class PessoaManager(models.Manager):
         result = self.all()
         return result
 
+    # querie para retornar uma pessoa específica
+    def aperson(self,pessoaid):
+        result = self.filter(id=pessoaid)
+        return result
+
     # querie para retornar pessoas do sexto masculino
     def homens(self):
         result = self.filter(sexo="M")
@@ -74,7 +79,7 @@ class Pessoa(models.Model):
         default='I'
     )
 
-    def __str__ (self):
-        return self.nome + ' ' + self.sobrenome
+#    def __str__ (self):
+#        return f"{self.nome}  {self.sobrenome}, {self.idade} anos."
 
     objects = PessoaManager()
