@@ -4,6 +4,14 @@ class Departamento(models.Model):
     sigla = models.CharField(max_length=6)
     descricao = models.CharField(max_length=30)
 
+class PessoaManager(models.Manager):
+    def create_pessoa(self, nome, sexo):
+        pessoa = self.create(nome=nome, sexo=sexo)
+        return pessoa
+
+    def print_pessoa(self):
+        print(self.none,self.sexo)
+
 class Pessoa(models.Model):
     nome = models.CharField(max_length=30)
     sobrenome = models.CharField(max_length=30)
@@ -36,3 +44,5 @@ class Pessoa(models.Model):
         choices=OPCOES_SEXO,
         default='I'
     )
+
+    objects = PessoaManager()
