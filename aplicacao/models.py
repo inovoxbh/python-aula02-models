@@ -79,7 +79,44 @@ class Pessoa(models.Model):
         default='I'
     )
 
-#    def __str__ (self):
-#        return f"{self.nome}  {self.sobrenome}, {self.idade} anos."
+    def __str__ (self):
+        return f"{self.nome}  {self.sobrenome}, {self.idade} anos."
 
     objects = PessoaManager()
+
+class Veiculo(models.Model):
+    placa = models.CharField(max_length=7)
+    modelo = models.CharField(max_length=30)
+    fabricacao = models.IntegerField(null=True)
+    proprietario = models.ForeignKey(
+        Pessoa,
+        on_delete=models.RESTRICT,
+        null=True
+    )
+
+    def __str__ (self):
+        return f"{self.modelo} {self.fabricacao}, {self.placa}"
+
+class Telefone(models.Model):
+    ddd = models.IntegerField(null=True)
+    numero = models.IntegerField(null=True)
+    proprietario = models.ForeignKey(
+        Pessoa,
+        on_delete=models.RESTRICT,
+        null=True
+    )
+
+    OPCOES_TIPO_TELEFONE = [
+        ('P','Pessoal'),
+        ('C','Comercial'),
+        ('I','Indefinido')
+    ]
+
+    tipo = models.CharField(
+        max_length=1,
+        choices=OPCOES_TIPO_TELEFONE,
+        default='I'
+    )
+
+    def __str__ (self):
+        return f"({self.ddd}) {self.numero}"
