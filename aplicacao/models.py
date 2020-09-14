@@ -79,7 +79,7 @@ class Pessoa(models.Model):
         default='I'
     )
 
-#    def __str__ (self):
-#        return f"{self.nome}  {self.sobrenome}, {self.idade} anos."
+    def __str__ (self):
+        return f"{self.nome}  {self.sobrenome}, {self.idade} anos."
 
     objects = PessoaManager()
