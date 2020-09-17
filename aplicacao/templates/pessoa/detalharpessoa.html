@@ -6,6 +6,7 @@
             <div>
                 <p>#{{p.id}} {{p.nome}} {{p.sobrenome}}, {{p.idade}} anos, CPF {{p.cpf}}</p>
                 <a href="/aplicacao/pessoa/deletar/{{p.id}}">Deletar</a>
+                <a href="/aplicacao/pessoa/atualizar/{{p.id}}">Atualizar</a>
             </div>
         {% endfor %}
     {% else %}

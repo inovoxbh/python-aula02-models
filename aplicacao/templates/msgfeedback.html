@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if mensagem %}
+        <p>{{mensagem}}</p>
+    {% else %}
+        <p>Clique no link abaixo para voltar.</p>
+    {% endif %}
+
+    <br />
+    <a href="/aplicacao/pessoas">Voltar</a>
+
+{% endblock %}

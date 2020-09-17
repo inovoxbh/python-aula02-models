@@ -100,4 +100,38 @@ def newpessoa(request):
 def deletarpessoa(request,pessoaid):
     db_pessoa = Pessoa.objects.aperson(pessoaid=pessoaid)
     db_pessoa.delete()
-    return HttpResponse("Deletado!!!")
+
+    payload = { 'mensagem' : "Cadastro excluído com sucesso!" }
+    template = loader.get_template('msgfeedback.html')
+    return HttpResponse(template.render(payload, request))
+
+@csrf_exempt
+def atualizarpessoa(request,pessoaid):
+    if (request.method == 'GET'):
+        db_pessoa = Pessoa.objects.aperson(pessoaid=pessoaid)
+        payload = { 'pessoa' : list(db_pessoa) }
+
+        template = loader.get_template('pessoa/atualizarpessoa.html')
+        return HttpResponse(template.render(payload, request))
+
+    if (request.method == 'POST'):
+        # recupera pessoa no banco de dados
+        db_pessoa = Pessoa.objects.get(id=pessoaid)
+
+        # extrai dados enviados na requisição
+        alldata = request.POST
+
+        # atualiza dados conforme parâmetro da requisição
+        db_pessoa.nome = alldata.get("nome", "0")
+        db_pessoa.sobrenome = alldata.get("sobrenome", "0")
+        db_pessoa.idade = alldata.get("idade", "0")
+        db_pessoa.cpf = alldata.get("cpf","0")
+        db_pessoa.sexo = alldata.get("sexo","0")
+        db_pessoa.deptoatual_id = alldata.get("depto_atual","0")
+
+        # salva pessoa alterada no banco
+        db_pessoa.save()
+
+        payload = { 'mensagem' : "Cadastro atualizado com sucesso!" }
+        template = loader.get_template('msgfeedback.html')
+        return HttpResponse(template.render(payload, request))

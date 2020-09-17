@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if pessoa %}
+        {% for p in pessoa %}
+            <form action="/aplicacao/pessoa/atualizar/{{p.id}}" method="POST">
+                <label for="name">Nome:</label><br>
+                <input type="text" id="name" name="nome" value="{{p.nome}}"><br>
+                <label for="name">sobrenome:</label><br>
+                <input type="text" id="surname" name="sobrenome" value="{{p.sobrenome}}"><br><br>
+                <input type="submit" value="Atualizar">
+            </form>
+        {% endfor %}
+    {% else %}
+        <p>Não foi possível localizar os dados da pessoa.</p>
+    {% endif %}
+
+    <br />
+    <a href="/aplicacao/pessoas">Voltar</a>
+
+{% endblock %}
