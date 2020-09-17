@@ -8,6 +8,6 @@ urlpatterns = [
     path('pessoa/cadastrar/nova', views.newpessoa, name='newpessoa'),
     path('pessoa/deletar/<int:pessoaid>', views.deletarpessoa, name='deletarpessoa'),
     path('pessoa/atualizar/<int:pessoaid>', views.atualizarpessoa, name='atualizarpessoa'),
-    path('coisa/', views.coisa, name='coisa'),
-    path('coisa/<int:coisaid>', views.coisadetails, name='coisadetails'),
+    path('pessoa/forminserepessoa', views.forminserepessoa, name='forminserepessoa'),
+    
 ]

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form action="/aplicacao/pessoa/cadastrar/nova" method="POST">
+        <label for="name">Nome:</label><br>
+        <input type="text" id="name" name="nome" value=""><br>
+
+        <label for="name">Sobrenome:</label><br>
+        <input type="text" id="surname" name="sobrenome" value=""><br><br>
+
+        <label for="name">Idade:</label><br>
+        <input type="text" id="idade" name="idade" value=""><br><br>
+
+        <label for="name">CPF:</label><br>
+        <input type="text" id="cpf" name="cpf" value=""><br><br>
+
+        <label for="name">Sexo:</label><br>
+        <input type="text" id="sexo" name="sexo" value=""><br><br>
+
+        <label for="name">Departamento:</label><br>
+        <input type="text" id="depto_atual" name="depto_atual" value=""><br><br>
+
+        <input type="submit" value="Inserir">
+    </form>
+
+    <br />
+    <a href="/aplicacao/pessoas">Voltar</a>
+
+{% endblock %}

@@ -4,18 +4,12 @@ from .models import Pessoa
 from django.views.decorators.csrf import csrf_exempt
 from django.http.multipartparser import MultiPartParser
 from django.template import loader
-
+from django.shortcuts import render
 
 def index(request):
     return HttpResponse("Hello world in Python Django")
 
-def coisa(request):
-    return HttpResponse("Hello world in Python Django - Coisa!.")
-
-def coisadetails(request,coisaid):
-    payload = {'dados':[{'id':coisaid}]}
-    return JsonResponse(payload)
-
+# REST e Template: retorna todas as pessoas
 def pessoas(request):
 	# recupera todas pessoas na base de dados
     db_pessoas = Pessoa.objects.todos().values()
@@ -30,6 +24,7 @@ def pessoas(request):
     template = loader.get_template('pessoa/listarpessoas.html')
     return HttpResponse(template.render(payload, request))
 
+# REST: detalha, deleta e atualiza pessoa
 @csrf_exempt
 def pessoa(request,pessoaid):
     if (request.method == 'GET'):
@@ -75,6 +70,7 @@ def pessoa(request,pessoaid):
         
         return HttpResponse("Atualizado com sucesso!")
 
+# REST: inclui pessoa
 @csrf_exempt
 def newpessoa(request):
     # dados enviados via Postman - Body - form-data
@@ -95,8 +91,14 @@ def newpessoa(request):
     # grava nova pessoa no banco
     p.save()
     
-    return HttpResponse("Inserido com sucesso!")
+    #return HttpResponse("Inserido com sucesso!")
 
+    payload = { 'mensagem' : "Cadastro inserido com sucesso!" }
+    template = loader.get_template('msgfeedback.html')
+    return HttpResponse(template.render(payload, request))
+
+
+# template: exclui pessoa
 def deletarpessoa(request,pessoaid):
     db_pessoa = Pessoa.objects.aperson(pessoaid=pessoaid)
     db_pessoa.delete()
@@ -105,6 +107,7 @@ def deletarpessoa(request,pessoaid):
     template = loader.get_template('msgfeedback.html')
     return HttpResponse(template.render(payload, request))
 
+# template: atualizar pessoa
 @csrf_exempt
 def atualizarpessoa(request,pessoaid):
     if (request.method == 'GET'):
@@ -135,3 +138,8 @@ def atualizarpessoa(request,pessoaid):
         payload = { 'mensagem' : "Cadastro atualizado com sucesso!" }
         template = loader.get_template('msgfeedback.html')
         return HttpResponse(template.render(payload, request))
+
+# template:insere pessoa
+@csrf_exempt
+def forminserepessoa(request):
+    return render(request, 'pessoa/inserirpessoa.html')

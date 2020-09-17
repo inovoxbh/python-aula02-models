@@ -4,10 +4,27 @@
     {% if pessoa %}
         {% for p in pessoa %}
             <form action="/aplicacao/pessoa/atualizar/{{p.id}}" method="POST">
+                <label for="name">ID:</label><br>
+                <input type="text" id="idpessoa" name="idpessoa" value="{{p.id}}" disabled><br>
+
                 <label for="name">Nome:</label><br>
                 <input type="text" id="name" name="nome" value="{{p.nome}}"><br>
-                <label for="name">sobrenome:</label><br>
+
+                <label for="name">Sobrenome:</label><br>
                 <input type="text" id="surname" name="sobrenome" value="{{p.sobrenome}}"><br><br>
+
+                <label for="name">Idade:</label><br>
+                <input type="text" id="idade" name="idade" value="{{p.idade}}"><br><br>
+        
+                <label for="name">CPF:</label><br>
+                <input type="text" id="cpf" name="cpf" value="{{p.cpf}}"><br><br>
+        
+                <label for="name">Sexo:</label><br>
+                <input type="text" id="sexo" name="sexo" value="{{p.sexo}}"><br><br>
+        
+                <label for="name">Departamento:</label><br>
+                <input type="text" id="depto_atual" name="depto_atual" value="{{p.depto_atual}}"><br><br>
+
                 <input type="submit" value="Atualizar">
             </form>
         {% endfor %}
