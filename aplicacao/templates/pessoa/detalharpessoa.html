@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if pessoa %}
+        {% for p in pessoa %}
+            <div>
+                <p>#{{p.id}} {{p.nome}} {{p.sobrenome}}, {{p.idade}} anos, CPF {{p.cpf}}</p>
+                <a href="/aplicacao/pessoa/deletar/{{p.id}}">Deletar</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Não foi possível localizar os dados da pessoa.</p>
+    {% endif %}
+
+    <br />
+    <a href="/aplicacao/pessoas">Voltar</a>
+
+{% endblock %}

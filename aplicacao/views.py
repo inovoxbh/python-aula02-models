@@ -1,16 +1,16 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from .models import Pessoa
 from django.views.decorators.csrf import csrf_exempt
-import json
 from django.http.multipartparser import MultiPartParser
+from django.template import loader
+
 
 def index(request):
-    return HttpResponse("Hello world in Python Django 1.")
+    return HttpResponse("Hello world in Python Django")
 
 def coisa(request):
-    return HttpResponse("Hello world in Python Django - Index 2222.")
+    return HttpResponse("Hello world in Python Django - Coisa!.")
 
 def coisadetails(request,coisaid):
     payload = {'dados':[{'id':coisaid}]}
@@ -24,7 +24,11 @@ def pessoas(request):
     payload = { 'todaspessoas' : list(db_pessoas) }
 
     # retorno em Json
-    return JsonResponse(payload)
+    #return JsonResponse(payload)
+
+    # retorno via template
+    template = loader.get_template('pessoa/listarpessoas.html')
+    return HttpResponse(template.render(payload, request))
 
 @csrf_exempt
 def pessoa(request,pessoaid):
@@ -36,7 +40,13 @@ def pessoa(request,pessoaid):
         payload = { 'pessoa' : list(db_pessoa) }
         
         # retorno em Json
-        return JsonResponse(payload)
+        #return JsonResponse(payload)
+
+        # retorno via template
+        template = loader.get_template('pessoa/detalharpessoa.html')
+        print(payload)
+        return HttpResponse(template.render(payload, request))
+
 
     if (request.method == 'DELETE'):
         db_pessoa = Pessoa.objects.aperson(pessoaid=pessoaid)
@@ -86,3 +96,8 @@ def newpessoa(request):
     p.save()
     
     return HttpResponse("Inserido com sucesso!")
+
+def deletarpessoa(request,pessoaid):
+    db_pessoa = Pessoa.objects.aperson(pessoaid=pessoaid)
+    db_pessoa.delete()
+    return HttpResponse("Deletado!!!")

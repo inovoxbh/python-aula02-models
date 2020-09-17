@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+            
+	{% if todaspessoas %}
+		<ul>
+		{% for p in todaspessoas %}
+			<li><a href="/aplicacao/pessoa/{{ p.id }}">{{ p.nome }}</a></li>
+		{% endfor %}
+        </ul>
+		<footer>Foram encontradas {{ todaspessoas | length }} pessoas!</footer>
+	{% else %}
+		<p>Não há pessoas cadastradas na aplicacão.</p>
+	{% endif %}
+
+{% endblock %}
