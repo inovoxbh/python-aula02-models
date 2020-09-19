@@ -130,7 +130,7 @@ def atualizarpessoa(request,pessoaid):
         db_pessoa.idade = alldata.get("idade", "0")
         db_pessoa.cpf = alldata.get("cpf","0")
         db_pessoa.sexo = alldata.get("sexo","0")
-        db_pessoa.deptoatual_id = alldata.get("depto_atual","0")
+        db_pessoa.depto_atual_id = alldata.get("depto_atual","0")
 
         # salva pessoa alterada no banco
         db_pessoa.save()
