@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+            
+	{% if todosdepartamentos %}
+		<ul>
+		{% for d in todosdepartamentos %}
+			<li><a href="/aplicacao/departamento/{{ d.id }}">{{d.sigla}} - {{ d.descricao }}</a></li>
+		{% endfor %}
+        </ul>
+	{% else %}
+		<p>Não há departamentos cadastrados na aplicacão.</p>
+	{% endif %}
+
+{% endblock %}

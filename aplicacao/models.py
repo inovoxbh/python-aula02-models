@@ -1,11 +1,22 @@
 from django.db import models
 
+class DepartamentoManager(models.Manager):
+    def todos(self):
+        result = self.all()
+        return result
+
+    def adepto(self,deptoid):
+        result = self.filter(id=deptoid)
+        return result
+
 class Departamento(models.Model):
     sigla = models.CharField(max_length=6)
     descricao = models.CharField(max_length=30)
 
     def __str__ (self):
         return self.sigla + ' ' + self.descricao
+
+    objects = DepartamentoManager()        
 
 class PessoaManager(models.Manager):
     def create_pessoa(self, nome, sexo):

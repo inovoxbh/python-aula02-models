@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if departamento %}
+        {% for d in departamento %}
+            <div>
+                <p>#{{d.id}} Sigla ({{d.sigla}}) - Descrição {{d.descricao}}</p>
+                <a href="/aplicacao/departamento/deletar/{{d.id}}">Deletar</a>
+                <a href="/aplicacao/departamento/atualizar/{{d.id}}">Atualizar</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Não foi possível localizar os dados do departamento.</p>
+    {% endif %}
+
+    <br />
+    <a href="/aplicacao/departamentos">Voltar</a>
+
+{% endblock %}

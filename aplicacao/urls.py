@@ -3,6 +3,7 @@ from .views import viewsindex
 from .views import viewspessoas
 from .views import viewstelefones
 from .views import viewsveiculos
+from .views import viewsdepartamentos
 
 urlpatterns = [
     path('', viewsindex.index, name='index'),
@@ -26,4 +27,11 @@ urlpatterns = [
     path('veiculo/deletar/<int:vehicleid>', viewsveiculos.deletarveiculo, name='deletarveiculo'),
     path('veiculo/atualizar/<int:vehicleid>', viewsveiculos.atualizarveiculo, name='atualizarveiculo'),
     path('veiculo/forminsereveiculo', viewsveiculos.forminsereveiculo, name='forminsereveiculo'),
+
+    path('departamentos/', viewsdepartamentos.departamentos, name='departamentos'),
+    path('departamento/<int:deptoid>', viewsdepartamentos.departamento, name='departamento'),
+    path('departamento/cadastrar/novo', viewsdepartamentos.newdepartamento, name='newdepartamento'),
+    path('departamento/deletar/<int:deptoid>', viewsdepartamentos.deletardepartamento, name='deletardepartamento'),
+    path('departamento/atualizar/<int:deptoid>', viewsdepartamentos.atualizardepartamento, name='atualizardepartamento'),
+    path('departamento/forminseredepartamento', viewsdepartamentos.forminseredepartamento, name='forminseredepartamento')    
 ]

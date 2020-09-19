@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if departamento %}
+        {% for d in departamento %}
+            <form action="/aplicacao/departamento/atualizar/{{d.id}}" method="POST">
+                <label for="name">ID:</label><br>
+                <input type="text" id="deptoid" name="deptoid" value="{{d.id}}" disabled><br>
+
+                <label for="name">Sigla:</label><br>
+                <input type="text" id="sigla" name="sigla" value="{{d.sigla}}"><br>
+
+                <label for="name">Descrição:</label><br>
+                <input type="text" id="descricao" name="descricao" value="{{d.descricao}}"><br><br>
+
+                <input type="submit" value="Atualizar">
+            </form>
+        {% endfor %}
+    {% else %}
+        <p>Não foi possível localizar os dados do departamento.</p>
+    {% endif %}
+
+    <br />
+    <a href="/aplicacao/departamentos">Voltar</a>
+
+{% endblock %}

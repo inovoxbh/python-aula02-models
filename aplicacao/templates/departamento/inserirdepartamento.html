@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form action="/aplicacao/departamento/cadastrar/novo" method="POST">
+        <label for="name">Sigla:</label><br>
+        <input type="text" id="sigla" name="sigla" value=""><br>
+
+        <label for="name">Descrição:</label><br>
+        <input type="text" id="descricao" name="descricao" value=""><br><br>
+
+        <input type="submit" value="Inserir">
+    </form>
+
+    <br />
+    <a href="/aplicacao/departamentos">Voltar</a>
+
+{% endblock %}
