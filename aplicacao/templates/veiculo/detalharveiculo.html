@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if veiculo %}
+        {% for v in veiculo %}
+            <div>
+                <p>#{{v.id}} Modelo ({{v.modelo}}) - Fabricação {{v.fabricacao}} - Placa {{ v.placa }} </p>
+                <a href="/aplicacao/veiculo/deletar/{{v.id}}">Deletar</a>
+                <a href="/aplicacao/veiculo/atualizar/{{v.id}}">Atualizar</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Não foi possível localizar os dados do veiculo.</p>
+    {% endif %}
+
+    <br />
+    <a href="/aplicacao/veiculos">Voltar</a>
+
+{% endblock %}

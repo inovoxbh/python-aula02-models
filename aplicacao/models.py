@@ -84,6 +84,15 @@ class Pessoa(models.Model):
 
     objects = PessoaManager()
 
+class VeiculoManager(models.Manager):
+    def todos(self):
+        result = self.all()
+        return result
+
+    def avehicle(self,vehicleid):
+        result = self.filter(id=vehicleid)
+        return result
+
 class Veiculo(models.Model):
     placa = models.CharField(max_length=7)
     modelo = models.CharField(max_length=30)
@@ -96,6 +105,8 @@ class Veiculo(models.Model):
 
     def __str__ (self):
         return f"{self.modelo} {self.fabricacao}, {self.placa}"
+
+    objects = VeiculoManager()
 
 class TelefoneManager(models.Manager):
     def todos(self):

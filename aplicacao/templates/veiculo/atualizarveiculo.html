@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if veiculo %}
+        {% for v in veiculo %}
+            <form action="/aplicacao/veiculo/atualizar/{{v.id}}" method="POST">
+                <label for="name">ID:</label><br>
+                <input type="text" id="vehicleid" name="vehicleid" value="{{v.id}}" disabled><br>
+
+                <label for="name">Modelo:</label><br>
+                <input type="text" id="modelo" name="modelo" value="{{v.modelo}}"><br>
+
+                <label for="name">Ano Fabricação:</label><br>
+                <input type="text" id="fabricacao" name="fabricacao" value="{{v.fabricacao}}"><br><br>
+
+                <label for="name">Placa:</label><br>
+                <input type="text" id="placa" name="placa" value="{{v.placa}}"><br><br>
+
+                <label for="name">Proprietário:</label><br>
+                <input type="text" id="proprietario_id" name="proprietario_id" value="{{v.proprietario_id}}"><br><br>
+        
+                <input type="submit" value="Atualizar">
+            </form>
+        {% endfor %}
+    {% else %}
+        <p>Não foi possível localizar os dados do veiculo.</p>
+    {% endif %}
+
+    <br />
+    <a href="/aplicacao/veiculos">Voltar</a>
+
+{% endblock %}

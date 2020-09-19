@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+            
+	{% if todosveiculos %}
+		<ul>
+		{% for v in todosveiculos %}
+			<li><a href="/aplicacao/veiculo/{{ v.id }}">{{v.modelo}}, {{ v.fabricacao }}. Placa {{ v.placa }}</a></li>
+		{% endfor %}
+        </ul>
+	{% else %}
+		<p>Não há veiculos cadastrados na aplicacão.</p>
+	{% endif %}
+
+{% endblock %}

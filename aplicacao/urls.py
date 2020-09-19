@@ -2,6 +2,7 @@ from django.urls import path
 from .views import viewsindex
 from .views import viewspessoas
 from .views import viewstelefones
+from .views import viewsveiculos
 
 urlpatterns = [
     path('', viewsindex.index, name='index'),
@@ -19,4 +20,10 @@ urlpatterns = [
     path('telefone/atualizar/<int:phoneid>', viewstelefones.atualizartelefone, name='atualizartelefone'),
     path('telefone/forminseretelefone', viewstelefones.forminseretelefone, name='forminseretelefone'),
     
+    path('veiculos/', viewsveiculos.veiculos, name='veiculos'),
+    path('veiculo/<int:vehicleid>', viewsveiculos.veiculo, name='veiculo'),
+    path('veiculo/cadastrar/novo', viewsveiculos.newveiculo, name='newveiculo'),
+    path('veiculo/deletar/<int:vehicleid>', viewsveiculos.deletarveiculo, name='deletarveiculo'),
+    path('veiculo/atualizar/<int:vehicleid>', viewsveiculos.atualizarveiculo, name='atualizarveiculo'),
+    path('veiculo/forminsereveiculo', viewsveiculos.forminsereveiculo, name='forminsereveiculo'),
 ]

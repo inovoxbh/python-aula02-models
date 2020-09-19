@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form action="/aplicacao/veiculo/cadastrar/novo" method="POST">
+        <label for="name">Modelo:</label><br>
+        <input type="text" id="modelo" name="modelo" value=""><br>
+
+        <label for="name">Ano Fabricação:</label><br>
+        <input type="text" id="fabricacao" name="fabricacao" value=""><br><br>
+
+        <label for="name">Placa:</label><br>
+        <input type="text" id="placa" name="placa" value=""><br><br>
+
+        <label for="name">Proprietário:</label><br>
+        <input type="text" id="proprietario_id" name="proprietario_id" value=""><br><br>
+
+        <input type="submit" value="Inserir">
+    </form>
+
+    <br />
+    <a href="/aplicacao/veiculos">Voltar</a>
+
+{% endblock %}
