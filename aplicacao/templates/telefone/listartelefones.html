@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+            
+	{% if todostelefones %}
+		<ul>
+		{% for t in todostelefones %}
+			<li><a href="/aplicacao/telefone/{{ t.id }}">({{t.ddd}}) {{ t.numero }}</a></li>
+		{% endfor %}
+        </ul>
+	{% else %}
+		<p>Não há telefones cadastrados na aplicacão.</p>
+	{% endif %}
+
+{% endblock %}

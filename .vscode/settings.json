@@ -1,3 +1,7 @@
 {
-    "python.pythonPath": "c:\\Projetos_DWFS\\python-exercicio-02\\Scripts\\python.exe"
+    "python.pythonPath": "c:\\Projetos_DWFS\\python-exercicio-02\\Scripts\\python.exe",
+    "python.venvFolders": [
+        "C:\\Projetos_DWFS\\python-exercicio-02"
+    ],
+    "python.linting.pylintPath": "C:\\Projetos_DWFS\\python-exercicio-02\\Scripts\\pylint.exe"
 }

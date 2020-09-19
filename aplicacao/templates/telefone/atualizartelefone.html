@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if telefone %}
+        {% for t in telefone %}
+            <form action="/aplicacao/telefone/atualizar/{{t.id}}" method="POST">
+                <label for="name">ID:</label><br>
+                <input type="text" id="phoneid" name="phoneid" value="{{t.id}}" disabled><br>
+
+                <label for="name">DDD:</label><br>
+                <input type="text" id="ddd" name="ddd" value="{{t.ddd}}"><br>
+
+                <label for="name">Número:</label><br>
+                <input type="text" id="numero" name="numero" value="{{t.numero}}"><br><br>
+
+                <label for="name">Proprietário:</label><br>
+                <input type="text" id="proprietario_id" name="proprietario_id" value="{{t.proprietario_id}}"><br><br>
+        
+                <label for="name">Tipo:</label><br>
+                <input type="text" id="tipo" name="tipo" value="{{t.tipo}}"><br><br>
+        
+                <input type="submit" value="Atualizar">
+            </form>
+        {% endfor %}
+    {% else %}
+        <p>Não foi possível localizar os dados do telefone.</p>
+    {% endif %}
+
+    <br />
+    <a href="/aplicacao/telefones">Voltar</a>
+
+{% endblock %}

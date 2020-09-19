@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if telefone %}
+        {% for t in telefone %}
+            <div>
+                <p>#{{t.id}} DDD ({{t.ddd}}) - Número: {{t.numero}}</p>
+                <a href="/aplicacao/telefone/deletar/{{t.id}}">Deletar</a>
+                <a href="/aplicacao/telefone/atualizar/{{t.id}}">Atualizar</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Não foi possível localizar os dados do telefone.</p>
+    {% endif %}
+
+    <br />
+    <a href="/aplicacao/telefones">Voltar</a>
+
+{% endblock %}

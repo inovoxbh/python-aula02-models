@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form action="/aplicacao/telefone/cadastrar/novo" method="POST">
+        <label for="name">DDD:</label><br>
+        <input type="text" id="ddd" name="ddd" value=""><br>
+
+        <label for="name">Numero:</label><br>
+        <input type="text" id="numero" name="numero" value=""><br><br>
+
+        <label for="name">Proprietário:</label><br>
+        <input type="text" id="proprietario" name="proprietario" value=""><br><br>
+
+        <label for="name">Tipo:</label><br>
+        <input type="text" id="tipo" name="tipo" value=""><br><br>
+
+        <input type="submit" value="Inserir">
+    </form>
+
+    <br />
+    <a href="/aplicacao/telefones">Voltar</a>
+
+{% endblock %}

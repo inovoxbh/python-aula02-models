@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.http import JsonResponse
-from .models import Pessoa
+from aplicacao.models import Pessoa
 from django.views.decorators.csrf import csrf_exempt
 from django.http.multipartparser import MultiPartParser
 from django.template import loader
@@ -39,7 +39,6 @@ def pessoa(request,pessoaid):
 
         # retorno via template
         template = loader.get_template('pessoa/detalharpessoa.html')
-        print(payload)
         return HttpResponse(template.render(payload, request))
 
 

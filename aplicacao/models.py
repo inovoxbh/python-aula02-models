@@ -97,6 +97,15 @@ class Veiculo(models.Model):
     def __str__ (self):
         return f"{self.modelo} {self.fabricacao}, {self.placa}"
 
+class TelefoneManager(models.Manager):
+    def todos(self):
+        result = self.all()
+        return result
+
+    def aphone(self,phoneid):
+        result = self.filter(id=phoneid)
+        return result
+
 class Telefone(models.Model):
     ddd = models.IntegerField(null=True)
     numero = models.IntegerField(null=True)
@@ -120,3 +129,5 @@ class Telefone(models.Model):
 
     def __str__ (self):
         return f"({self.ddd}) {self.numero}"
+
+    objects = TelefoneManager()
